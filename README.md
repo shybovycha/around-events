@@ -53,10 +53,12 @@ Let us have these two slides:
 
 And defined these two handlers:
 
-    Reveal.addSlideHandler('saveName', function(slide) {
-        window.userName = slide.querySelector('[name=userName]').value;
-    });
+    Reveal.addEventListener('ready', function() {
+        Reveal.addSlideHandler('saveName', function(slide) {
+            window.userName = slide.querySelector('[name=userName]').value;
+        });
 
-    Reveal.addSlideHandler('showName', function(slide) {
-        slide.querySelector('#name').innerHTML = window.userName || 'user';
+        Reveal.addSlideHandler('showName', function(slide) {
+            slide.querySelector('#name').innerHTML = window.userName || 'user';
+        });
     });
