@@ -4,6 +4,20 @@
 
 This plugin allows one to define `before`- and `after`-event set for each slide. Events are fired, as they go, before the slide is shown and right before the next slide is being shown.
 
+## Installation
+
+First you should include the plugin in your presentation - simply adding it to the `plugin/around-events` directory.
+
+Then you should add it to the presentation initialization code:
+
+    Reveal.initialize({
+        // ...
+        dependencies: [
+            // ...
+            { src: 'plugin/around-events/around-events.js', async: true }
+        ]
+    });
+
 ## Usage
 
 Usage is split into two steps.
@@ -13,6 +27,10 @@ Usage is split into two steps.
 Use `Reveal.addSlideHandler(handlerName, handlerRoutine)` to define a handler with the name `handlerName` and the code `handlerRoutine`.
 
 You should define events before using them. Otherwise, they will simply not be fired.
+
+Handlers receive one argument, current slide node.
+
+To remove handler, use `Reveal.removeSlideHandler(handlerName)`.
 
 ### 2. Defining events for slides
 
